@@ -16,7 +16,7 @@ const route: Routes = [
   declarations: [
     ProductComponent,
     ProductAddComponent,
-    ProductEditComponent
+    ProductEditComponent,
   ],
   imports: [
     CommonModule,

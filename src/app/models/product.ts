@@ -15,3 +15,9 @@ export class Product extends Model {
     this.productPrice = productPrice;
   }
 }
+
+export class Stock extends Model {
+  qte!: number;
+  productId!: number;
+  dateStock!: Date;
+}

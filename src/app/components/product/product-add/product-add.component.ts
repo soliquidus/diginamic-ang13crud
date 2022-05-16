@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ProductService} from "../../../services/product.service";
 import {Product} from "../../../models/product";
 import {Router} from "@angular/router";
+import {WebService} from "../../../services/web.service";
 
 @Component({
   selector: 'app-product-add',
@@ -15,9 +15,10 @@ import {Router} from "@angular/router";
  */
 export class ProductAddComponent implements OnInit {
   angForm !: FormGroup;
+  urlPart: string = "products/"
 
   constructor(private formBuilder: FormBuilder,
-              private productService: ProductService<Product>,
+              private productService: WebService<Product>,
               private router: Router) {
   }
 
@@ -34,8 +35,8 @@ export class ProductAddComponent implements OnInit {
    */
   private createForm() {
     this.angForm = this.formBuilder.group({
-      productName: ['',[Validators.required, Validators.minLength(4)]],
-      productDescription: ['',[ Validators.required, Validators.minLength(10)]],
+      productName: ['', [Validators.required, Validators.minLength(4)]],
+      productDescription: ['', [Validators.required, Validators.minLength(10)]],
       productPrice: ['', Validators.required]
     })
   }
@@ -57,6 +58,6 @@ export class ProductAddComponent implements OnInit {
    */
   addProduct(productName: string, productDescription: string, productPrice: number): void {
     let product = new Product(productName, productDescription, productPrice)
-     this.productService.addProduct(product);
+    this.productService.addData(product, this.urlPart);
   }
 }

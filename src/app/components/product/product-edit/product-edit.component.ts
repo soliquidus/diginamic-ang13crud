@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from "../../../models/product";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ProductService} from "../../../services/product.service";
+import {WebService} from "../../../services/web.service";
 
 @Component({
   selector: 'app-product-edit',
@@ -14,17 +14,18 @@ import {ProductService} from "../../../services/product.service";
  */
 export class ProductEditComponent implements OnInit {
   id!: number;
+  urlPart:string = "products/"
   product!: Product;
   angForm : any = FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private productService: ProductService<Product>,
+              private productService: WebService<Product>,
               private formBuilder: FormBuilder) {
   }
 
   /**
-   * User edit form with validations constraints
+   * Product edit form with validations constraints
    * @private
    */
   private createForm() {
@@ -34,26 +35,25 @@ export class ProductEditComponent implements OnInit {
       productPrice: [this.product.productPrice, Validators.required]
     })
   }
-
-  /**
+/**
    * Gets Product ID from uri to get product data
    */
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.getUser(this.id);
+    this.getProduct(this.id);
   }
 
   /**
    * Retrieve product data with given ID and initialize form with it
    * @param id
    */
-  getUser(id: number) {
-    this.productService.getProduct(id).subscribe({
+  getProduct(id: number) {
+    this.productService.getData(id, this.urlPart).subscribe({
         next: data => {
           this.product = data;
           this.createForm();
         },
-      error: err => console.log('Error while getting user: ' + err),
+      error: err => console.log('Error while getting product: ' + err),
       complete: () => console.log("Get Product complete")
       })
   }
@@ -65,7 +65,7 @@ export class ProductEditComponent implements OnInit {
     this.product.productName = this.formValue('productName');
     this.product.productDescription = this.formValue('productDescription');
     this.product.productPrice = this.formValue('productPrice');
-    this.productService.updateProduct(this.product);
+    this.productService.updateData(this.product, this.urlPart);
     this.router.navigate([''])
   }
 

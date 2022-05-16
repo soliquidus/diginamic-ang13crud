@@ -4,6 +4,7 @@
     <td>Product Name</td>
     <td>Product Description</td>
     <td>Product Price</td>
+    <td>Stock</td>
     <td colspan="2">Actions</td>
   </tr>
   </thead>
@@ -13,6 +14,11 @@
     <td>{{ product.productName }}</td>
     <td>{{ product.productDescription }}</td>
     <td>{{ product.productPrice }}</td>
+    <td *ngFor="let stock of stocks">
+      <div *ngIf="stock.productId === product.id">
+        {{ stock.qte }}
+      </div>
+    </td>
     <td><a [routerLink]="['/edit', product.id]"
            class="btn btn-primary">Edit</a></td>
     <td><a (click) = "deleteProduct(product.id)"

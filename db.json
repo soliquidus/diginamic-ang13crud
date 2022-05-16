@@ -34,12 +34,26 @@
       "productName": "Hagström",
       "productDescription": "Good guitar for a fair price!",
       "productPrice": 450
+    }
+  ],
+  "stocks": [
+    {
+      "id": 1,
+      "qte": 2,
+      "productId": 1,
+      "dateStock": "December 17, 2021 03:24:00"
     },
     {
-      "productName": "Yamaha Pacifica 112L",
-      "productDescription": "Great guitar for beginners!",
-      "productPrice": 240,
-      "id": 4
+      "id": 2,
+      "qte": 4,
+      "productId": 2,
+      "dateStock": "December 17, 2021 03:24:00"
+    },
+    {
+      "id": 3,
+      "qte": 10,
+      "productId": 3,
+      "dateStock": "December 17, 2021 03:24:00"
     }
   ]
 }

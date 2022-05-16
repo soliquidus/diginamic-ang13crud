@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../../models/product";
-import {ProductService} from "../../services/product.service";
+import {Product, Stock} from "../../models/product";
+import {WebService} from "../../services/web.service";
 
 @Component({
   selector: 'app-product',
@@ -12,18 +12,21 @@ import {ProductService} from "../../services/product.service";
  */
 export class ProductComponent implements OnInit {
   products!: Product[];
-  visible = false;
-  number = 0;
+  stocks!: Stock[];
+  urlPart : string = "products/";
 
-  constructor(private productService: ProductService<Product>) {
+  constructor(private productService: WebService<Product>,
+              private stockService: WebService<Stock>) {
   }
 
   /**
    * Get all products on initialization
    */
   ngOnInit(): void {
-    this.productService.getProducts();
-    this.products = this.productService.products;
+    this.productService.getAllData(this.urlPart);
+    this.products = this.productService.data;
+    this.stockService.getAllData(this.urlPart);
+    this.stocks = this.stockService.data;
   }
 
   /**
@@ -31,7 +34,7 @@ export class ProductComponent implements OnInit {
    * @param id
    */
   deleteProduct(id: number) {
-    this.productService.deleteProduct(id);
+    this.productService.deleteData(id, this.urlPart);
   }
-
 }
+
