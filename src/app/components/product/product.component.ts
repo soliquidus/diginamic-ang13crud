@@ -3,7 +3,7 @@ import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
@@ -15,15 +15,15 @@ export class ProductComponent implements OnInit {
   visible = false;
   number = 0;
 
-  constructor(private ps: ProductService<Product>) {
+  constructor(private productService: ProductService<Product>) {
   }
 
   /**
    * Get all products on initialization
    */
   ngOnInit(): void {
-    this.ps.getProducts();
-    this.products = this.ps.products;
+    this.productService.getProducts();
+    this.products = this.productService.products;
   }
 
   /**
@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit {
    * @param id
    */
   deleteProduct(id: number) {
-    this.ps.deleteProduct(id);
+    this.productService.deleteProduct(id);
   }
 
 }

@@ -19,8 +19,8 @@ export class ProductEditComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private ps: ProductService<Product>,
-              private fb: FormBuilder) {
+              private productService: ProductService<Product>,
+              private formBuilder: FormBuilder) {
   }
 
   /**
@@ -28,7 +28,7 @@ export class ProductEditComponent implements OnInit {
    * @private
    */
   private createForm() {
-    this.angForm = this.fb.group({
+    this.angForm = this.formBuilder.group({
       productName: [this.product.productName, [Validators.required, Validators.minLength(4)]],
       productDescription: [this.product.productDescription, [Validators.required, Validators.minLength(10)]],
       productPrice: [this.product.productPrice, Validators.required]
@@ -48,7 +48,7 @@ export class ProductEditComponent implements OnInit {
    * @param id
    */
   getUser(id: number) {
-    this.ps.getProduct(id).subscribe({
+    this.productService.getProduct(id).subscribe({
         next: data => {
           this.product = data;
           this.createForm();
@@ -65,7 +65,7 @@ export class ProductEditComponent implements OnInit {
     this.product.productName = this.formValue('productName');
     this.product.productDescription = this.formValue('productDescription');
     this.product.productPrice = this.formValue('productPrice');
-    this.ps.updateProduct(this.product);
+    this.productService.updateProduct(this.product);
     this.router.navigate([''])
   }
 

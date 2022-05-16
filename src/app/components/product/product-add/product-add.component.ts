@@ -16,7 +16,7 @@ import {Router} from "@angular/router";
 export class ProductAddComponent implements OnInit {
   angForm !: FormGroup;
 
-  constructor(private fb: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private productService: ProductService<Product>,
               private router: Router) {
   }
@@ -33,7 +33,7 @@ export class ProductAddComponent implements OnInit {
    * @private
    */
   private createForm() {
-    this.angForm = this.fb.group({
+    this.angForm = this.formBuilder.group({
       productName: ['',[Validators.required, Validators.minLength(4)]],
       productDescription: ['',[ Validators.required, Validators.minLength(10)]],
       productPrice: ['', Validators.required]
