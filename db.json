@@ -1,0 +1,45 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "products": [
+    {
+      "id": 1,
+      "productName": "Schecter CLS Elite 7",
+      "productDescription": "Amazing guitar!",
+      "productPrice": 1700
+    },
+    {
+      "id": 2,
+      "productName": "Solar AC7",
+      "productDescription": "Great guitar!",
+      "productPrice": 780
+    },
+    {
+      "id": 3,
+      "productName": "Hagström",
+      "productDescription": "Good guitar for a fair price!",
+      "productPrice": 450
+    },
+    {
+      "productName": "Yamaha Pacifica 112L",
+      "productDescription": "Great guitar for beginners!",
+      "productPrice": 240,
+      "id": 4
+    }
+  ]
+}
