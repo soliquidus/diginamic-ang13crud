@@ -14,14 +14,14 @@
     <td>{{ product.productName }}</td>
     <td>{{ product.productDescription }}</td>
     <td>{{ product.productPrice }}</td>
-    <td *ngFor="let stock of stocks">
-      <div *ngIf="stock.productId === product.id">
+    <div *ngFor="let stock of stocks">
+      <td *ngIf="stock.productId === product.id">
         {{ stock.qte }}
-      </div>
-    </td>
+      </td>
+    </div>
     <td><a [routerLink]="['/edit', product.id]"
            class="btn btn-primary">Edit</a></td>
-    <td><a (click) = "deleteProduct(product.id)"
+    <td><a (click)="deleteProduct(product.id)"
            class="btn btn-danger">Delete</a>
   </tr>
   </tbody>

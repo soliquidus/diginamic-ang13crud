@@ -34,26 +34,38 @@
       "productName": "Hagström",
       "productDescription": "Good guitar for a fair price!",
       "productPrice": 450
+    },
+    {
+      "productName": "Yamaha 112L",
+      "productDescription": "Great guitar for beginners!",
+      "productPrice": 240,
+      "id": 4
     }
   ],
   "stocks": [
     {
       "id": 1,
-      "qte": 2,
+      "qte": 7,
       "productId": 1,
-      "dateStock": "December 17, 2021 03:24:00"
+      "dateStock": "2021-12-11T14:03:13.215Z"
     },
     {
       "id": 2,
       "qte": 4,
       "productId": 2,
-      "dateStock": "December 17, 2021 03:24:00"
+      "dateStock": "2022-03-12T06:14:03.430Z"
     },
     {
       "id": 3,
       "qte": 10,
       "productId": 3,
-      "dateStock": "December 17, 2021 03:24:00"
+      "dateStock": "2022-04-22T09:25:59.640Z"
+    },
+    {
+      "qte": 25,
+      "productId": 4,
+      "dateStock": "2022-05-17T12:35:39.571Z",
+      "id": 4
     }
   ]
 }

@@ -16,6 +16,13 @@
         Product description is required.
       </div>
       <div class="form-group">
+        <label class="col-md-4">Product Stock </label>
+        <input type="number" class="form-control" formControlName="productStock" #productStock>
+      </div>
+      <div *ngIf="angForm.controls['productStock'].invalid && (angForm.controls['productStock'].dirty || angForm.controls['productStock'].touched)" class="alert alert-danger">
+        Product stock information is required.
+      </div>
+      <div class="form-group">
         <label class="col-md-4">Product Price</label>
         <input type="number" class="form-control" formControlName="productPrice" #productPrice/>
       </div>
