@@ -73,18 +73,12 @@ export class ProductAddComponent implements OnInit {
    * @param productStock
    */
   addStock(productStock: number) {
-    this.productService.getAllData(UrlParts.products).subscribe({
-        next: data => data.map(d => {
-          if (d.id === data.length) {
-            let stock = new Stock(productStock, d.id);
-            this.stockService.addData(stock, UrlParts.stocks).subscribe({
-              next: () => this.productService.getAllData(UrlParts.products).subscribe(),
-              error: err => console.log(`Error while adding data (${UrlParts.stocks}): ` + err),
-              complete: () => console.log(`Post data complete (${UrlParts.stocks})`)
-            })
-          }
-        })
-      }
+    this.productService.getAllData(UrlParts.products).subscribe(
+      data => this.stockService.addData(new Stock(productStock, data[data.length - 1].id), UrlParts.stocks).subscribe({
+        next: () => this.productService.getAllData(UrlParts.products).subscribe(),
+        error: err => console.log(`Error while adding data (${UrlParts.stocks}): ` + err),
+        complete: () => console.log(`Post data complete (${UrlParts.stocks})`)
+      })
     )
   }
 
