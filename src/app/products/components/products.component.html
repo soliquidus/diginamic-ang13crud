@@ -1,0 +1,28 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <td><strong>Product Name</strong></td>
+    <td><strong>Product Description</strong></td>
+    <td><strong>Product Price</strong></td>
+    <td><strong>Stock</strong></td>
+    <td *ngIf="loginService.canActivate()" colspan="2"><strong>Actions</strong></td>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let product of products">
+    <td>{{ product.productName }}</td>
+    <td>{{ product.productDescription }}</td>
+    <td>{{ product.productPrice }}€</td>
+    <div *ngFor="let stock of stocks">
+      <td *ngIf="stock.productId === product.id">
+        {{ stock.qte }}
+      </td>
+    </div>
+    <td *ngIf="loginService.canActivate()"><a [routerLink]="['/edit', product.id]"
+           class="btn btn-primary">Edit</a></td>
+    <td *ngIf="loginService.canActivate()"><a (click)="deleteProduct(product.id)"
+           class="btn btn-danger">Delete</a>
+  </tr>
+  </tbody>
+</table>

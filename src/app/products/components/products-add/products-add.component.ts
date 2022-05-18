@@ -1,20 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Product, Stock} from "../../../models/product";
+import {Product, Stock} from "../../model/product";
 import {Router} from "@angular/router";
 import {ApiService} from "../../../services/api.service";
 import {UrlParts} from "../../../utils/urlParts";
 
 @Component({
-  selector: 'app-product-add',
-  templateUrl: './product-add.component.html',
-  styleUrls: ['./product-add.component.css']
+  selector: 'app-products-add',
+  templateUrl: './products-add.component.html',
+  styleUrls: ['./products-add.component.css']
 })
 
 /**
  * Product component to manage new products
  */
-export class ProductAddComponent implements OnInit {
+export class ProductsAddComponent implements OnInit {
   angForm !: FormGroup;
 
   constructor(private formBuilder: FormBuilder,

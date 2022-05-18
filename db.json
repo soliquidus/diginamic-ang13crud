@@ -1,21 +1,4 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "products": [
     {
       "id": 1,
@@ -45,7 +28,7 @@
   "stocks": [
     {
       "id": 1,
-      "qte": 7,
+      "qte": 8,
       "productId": 1,
       "dateStock": "2021-12-11T14:03:13.215Z"
     },
@@ -66,6 +49,14 @@
       "productId": 4,
       "dateStock": "2022-05-17T12:35:39.571Z",
       "id": 4
+    }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "password",
+      "isAnonymous": false
     }
   ]
 }

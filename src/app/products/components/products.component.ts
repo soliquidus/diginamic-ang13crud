@@ -1,22 +1,24 @@
 import {Component, OnInit} from '@angular/core';
-import {Product, Stock} from "../../models/product";
+import {Product, Stock} from "../model/product";
 import {ApiService} from "../../services/api.service";
 import {UrlParts} from "../../utils/urlParts";
+import {LoginService} from "../../core/login/service/login.service";
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
 })
 /**
  * Main product component, retrieves all existing products with delete function included
  */
-export class ProductComponent implements OnInit {
+export class ProductsComponent implements OnInit {
   products = new Array<Product>();
   stocks = new Array<Stock>();
 
   constructor(private productService: ApiService<Product>,
-              private stockService: ApiService<Stock>) {
+              private stockService: ApiService<Stock>,
+              public loginService: LoginService) {
   }
 
   /**

@@ -1,4 +1,5 @@
 export enum UrlParts {
   products = "products/",
-  stocks = "stocks/"
+  stocks = "stocks/",
+  login = "login/"
 }
