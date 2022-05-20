@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Product, Stock} from "../../model/product";
 import {Router} from "@angular/router";
 import {ApiService} from "../../../services/api.service";
-import {UrlParts} from "../../../utils/urlParts";
+import {UrlParts} from "../../../enums/urlParts";
 
 @Component({
   selector: 'app-products-add',
@@ -54,10 +54,10 @@ export class ProductsAddComponent implements OnInit {
 
   /**
    * Add a product to DB with corresponding stock
-   * @param productName
-   * @param productDescription
-   * @param productPrice
-   * @param productStock
+   * @param productName the product name
+   * @param productDescription the product description
+   * @param productPrice the product price
+   * @param productStock the product available stock
    */
   addProduct(productName: string, productDescription: string, productPrice: number, productStock: number): void {
     let product = new Product(productName, productDescription, productPrice)

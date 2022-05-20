@@ -58,5 +58,31 @@
       "password": "password",
       "isAnonymous": false
     }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "firstName": "Robert",
+      "lastName": "Duchemolle",
+      "email": "roro@gmail.com"
+    },
+    {
+      "id": 2,
+      "firstName": "Jeanne",
+      "lastName": "D'Archer",
+      "email": "jeanneArchy@gmail.com"
+    },
+    {
+      "id": 3,
+      "firstName": "Thomas",
+      "lastName": "Dufour",
+      "email": "toto@gmail.com"
+    },
+    {
+      "id": 4,
+      "firstName": "Sigmund",
+      "lastName": "Creuse",
+      "email": "zig@gmail.com"
+    }
   ]
 }

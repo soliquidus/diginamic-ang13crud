@@ -1,3 +1,6 @@
+<div class="text-center" *ngIf="loginService.canActivate()">
+  <button type="button" class="btn btn-info" [routerLink]="['create']">Add a new Product</button>
+</div><br/>
 <table class="table table-hover">
   <thead>
   <tr>
@@ -19,7 +22,7 @@
         {{ stock.qte }}
       </td>
     </div>
-    <td *ngIf="loginService.canActivate()"><a [routerLink]="['/edit', product.id]"
+    <td *ngIf="loginService.canActivate()"><a [routerLink]="['/products/edit', product.id]"
            class="btn btn-primary">Edit</a></td>
     <td *ngIf="loginService.canActivate()"><a (click)="deleteProduct(product.id)"
            class="btn btn-danger">Delete</a>

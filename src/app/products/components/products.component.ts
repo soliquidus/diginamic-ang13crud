@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Product, Stock} from "../model/product";
 import {ApiService} from "../../services/api.service";
-import {UrlParts} from "../../utils/urlParts";
+import {UrlParts} from "../../enums/urlParts";
 import {LoginService} from "../../core/login/service/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -18,7 +19,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productService: ApiService<Product>,
               private stockService: ApiService<Stock>,
-              public loginService: LoginService) {
+              public loginService: LoginService,
+              private router: Router) {
   }
 
   /**
@@ -35,6 +37,7 @@ export class ProductsComponent implements OnInit {
    */
   deleteProduct(id: number) {
     this.productService.deleteData(id, UrlParts.products);
+    this.router.navigate([''])
   }
 
   /**

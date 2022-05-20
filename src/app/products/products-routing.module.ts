@@ -8,8 +8,8 @@ import {LoginGuard} from "../core/services/login.guard";
 const routes: Routes = [
   {path: '', redirectTo: 'products', pathMatch:'full'},
   {path: 'products', component:ProductsComponent},
-  {path: 'create', component: ProductsAddComponent, canActivate: [LoginGuard]},
-  {path: 'edit/:id', component: ProductsEditComponent},
+  {path: 'products/create', component: ProductsAddComponent, canActivate: [LoginGuard]},
+  {path: 'products/edit/:id', component: ProductsEditComponent, canActivate: [LoginGuard]},
   ]
 
 @NgModule({

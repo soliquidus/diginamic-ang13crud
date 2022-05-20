@@ -4,7 +4,7 @@ import {BehaviorSubject, map, Observable} from "rxjs";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {environment} from "../../../../environments/environment";
-import {UrlParts} from "../../../utils/urlParts";
+import {UrlParts} from "../../../enums/urlParts";
 
 const ANONYMOUS_USER = <Login>{
   isAnonymous: true,

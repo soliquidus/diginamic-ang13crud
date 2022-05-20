@@ -1,11 +1,4 @@
-/**
- * All models for project, in a bigger and more professional project
- * classes would be separated.
- */
-
-export class Model {
-  id !: number;
-}
+import {Model} from "../../core/model/model";
 
 export class Product extends Model {
   productName !: string;

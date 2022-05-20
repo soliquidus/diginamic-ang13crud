@@ -4,11 +4,13 @@ import {AppComponent} from "../app.component";
 import {LoginComponent} from "./login/components/login.component";
 
 const routes: Routes = [
-  {path: "", loadChildren: () => import('../products/products.module')
+  {path: '', loadChildren: () => import('../products/products.module')
       .then(m => m.ProductsModule)},
-  {path: "login", component: LoginComponent},
-  {path: "404", component:AppComponent},
-  {path: "**", redirectTo:"/404"},
+  {path: 'customers', loadChildren: () => import('../customers/customers.module')
+      .then(m => m.CustomersModule)},
+  {path: 'login', component: LoginComponent},
+  {path: '404', component:AppComponent},
+  {path: '**', redirectTo:'/404'},
 ];
 
 @NgModule({

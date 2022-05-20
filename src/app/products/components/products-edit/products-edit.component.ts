@@ -3,7 +3,7 @@ import {Product, Stock} from "../../model/product";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "../../../services/api.service";
-import {UrlParts} from "../../../utils/urlParts";
+import {UrlParts} from "../../../enums/urlParts";
 
 @Component({
   selector: 'app-products-edit',
@@ -51,7 +51,7 @@ export class ProductsEditComponent implements OnInit {
 
   /**
    * Retrieve product data with given ID and initialize form with it
-   * @param id
+   * @param id the product id
    */
   getProduct(id: number) {
     this.productService.getData(id, UrlParts.products).subscribe({
@@ -66,7 +66,7 @@ export class ProductsEditComponent implements OnInit {
 
   /**
    * Retrieve stock data with corresponding product ID
-   * @param dataId
+   * @param dataId the product Id
    */
   getStock(dataId: number) {
     this.stockService.getAllData(UrlParts.stocks).subscribe({
@@ -94,6 +94,11 @@ export class ProductsEditComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  /**
+   * Gets the value of a given form control name
+   * @param controlName the formControlName
+   * @private
+   */
   private formValue(controlName: string) {
     // @ts-ignore
     return this.angForm.get(controlName).value;
