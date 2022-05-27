@@ -18,8 +18,8 @@
     <td>{{ customer.email }}</td>
     <td *ngIf="loginService.canActivate()"><a [routerLink]="['edit', customer.id]"
                                               class="btn btn-primary">Edit</a></td>
-    <td *ngIf="loginService.canActivate()"><a (click)="deleteCustomer(customer.id)"
-                                              class="btn btn-danger">Delete</a>
+<!--    <td *ngIf="loginService.canActivate()"><a (click)="deleteCustomer(customer.id)"-->
+<!--                                              class="btn btn-danger">Delete</a>-->
   </tr>
   </tbody>
 </table>

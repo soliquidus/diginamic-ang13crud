@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Customer} from "../model/customer";
 import {ApiService} from "../../services/api.service";
 import {UrlParts} from "../../enums/urlParts";
 import {LoginService} from "../../core/login/service/login.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Customer} from "../model/customer";
 
 @Component({
   selector: 'app-customers',
@@ -13,24 +13,21 @@ import {Router} from "@angular/router";
 export class CustomersComponent implements OnInit {
   customers = new Array<Customer>();
 
-  constructor(
+  constructor(private route: ActivatedRoute,
               private customerService: ApiService<Customer>,
               public loginService: LoginService,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.getCustomers()
+    this.getCustomers();
   }
 
   /**
-   * Get all customers from DB
+   * Get all customers from resolver
    */
   getCustomers() {
-    this.customerService.getAllData(UrlParts.customers).subscribe({
-      next: data => {
-        this.customers.splice(0, this.customers.length);
-        data.forEach(c => this.customers.push(c));
-      },
+    this.route.data.subscribe({
+      next: data => this.customers = data['customers'],
       error: err => console.log(`Error while getting data (${UrlParts.customers}): ` + err),
       complete: () => console.log(`Get all data complete (${UrlParts.customers})`)
     })

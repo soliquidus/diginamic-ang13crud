@@ -1,7 +1,7 @@
 # Ang13crud
 
 School project to get used to Angular basics <br>
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+Simple crud app with login security to access to management functions `(log : admin, pass : password)` <br>
 
 ## Json-server
 

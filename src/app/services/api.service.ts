@@ -11,8 +11,6 @@ import {environment} from "../../environments/environment";
  */
 export class ApiService<T extends Model> {
 
-  data = new Array<T>();
-
   constructor(private http: HttpClient) {
   }
 

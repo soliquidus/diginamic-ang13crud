@@ -3,7 +3,7 @@ import {Product, Stock} from "../model/product";
 import {ApiService} from "../../services/api.service";
 import {UrlParts} from "../../enums/urlParts";
 import {LoginService} from "../../core/login/service/login.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -17,7 +17,8 @@ export class ProductsComponent implements OnInit {
   products = new Array<Product>();
   stocks = new Array<Stock>();
 
-  constructor(private productService: ApiService<Product>,
+  constructor(private route: ActivatedRoute,
+              private productService: ApiService<Product>,
               private stockService: ApiService<Stock>,
               public loginService: LoginService,
               private router: Router) {
@@ -41,15 +42,12 @@ export class ProductsComponent implements OnInit {
   }
 
   /**
-   * Get all products from DB
+   * Get all products from resolver
    */
   getProducts() {
-    this.productService.getAllData(UrlParts.products).subscribe(
+    this.route.data.subscribe(
       {
-        next: data => {
-          this.products.splice(0, this.products.length);
-          data.forEach(p => this.products.push(p));
-        },
+        next: data => this.products = data['products'],
         error: err => console.log(`Error while getting data (${UrlParts.products}): ` + err),
         complete: () => console.log(`Get all data complete (${UrlParts.products})`)
       }
@@ -57,15 +55,12 @@ export class ProductsComponent implements OnInit {
   }
 
   /**
-   * Gets all stocks available in DB
+   * Gets all stocks available from resolver
    */
   getStocks() {
-    this.stockService.getAllData(UrlParts.stocks).subscribe(
+    this.route.data.subscribe(
       {
-        next: data => {
-          this.stocks.splice(0, this.stocks.length);
-          data.forEach(p => this.stocks.push(p));
-        },
+        next: data => this.stocks = data['stocks'],
         error: err => console.log(`Error while getting data (${UrlParts.stocks}): ` + err),
         complete: () => console.log(`Get all data complete (${UrlParts.stocks})`)
       }
